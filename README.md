@@ -18,7 +18,7 @@
 ### 下载歌曲id对应的mp3音乐
 - 歌曲id fO7s7a822
 - 歌曲url https://www.xiami.com/song/fO7s7a822
-- 直接用 youtube-dl 可以下载歌曲, youtube-dl --quiet --extract-audio url -o fO7s7a822.%(ext)s
+- 直接用 youtube-dl 可以下载歌曲, ```youtube-dl --quiet --extract-audio 'https://www.xiami.com/song/fO7s7a822' -o 'fO7s7a822.%(ext)s'``` 下载到 ```f07s7a822.mp3```
 - 通过 parallel 可以实现并行下载
 
 ## 环境
