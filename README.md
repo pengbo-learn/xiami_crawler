@@ -16,9 +16,9 @@
     - 通过正则表达式解析 ``` '<a href="/song/([^"]+?)">'```
 
 ### 下载歌曲id对应的mp3音乐
-- 歌曲id <id>
-- 歌曲url https://www.xiami.com/song/<id>
-- 直接用 youtube-dl 可以下载<url>的歌曲到路径<path>, youtube-dl --quiet --extract-audio <url> -o <path>
+- 歌曲id fO7s7a822
+- 歌曲url https://www.xiami.com/song/fO7s7a822
+- 直接用 youtube-dl 可以下载歌曲, youtube-dl --quiet --extract-audio url -o fO7s7a822.%(ext)s
 - 通过 parallel 可以实现并行下载
 
 ## 环境
