@@ -1,0 +1,5 @@
+*.pyc
+.*.swp
+*.mp3
+*.log
+env_*/
