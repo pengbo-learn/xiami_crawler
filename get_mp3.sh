@@ -14,17 +14,15 @@ get_clip() {
 }
 export -f get_clip;
 
-TYPES="Genre曲风"   # 待爬取的类型
-PARA_NUM="32"       # 爬取并行进程数
-MUSIC_NUM="100"     # 每个歌曲标签下载歌曲数
-for TYPE in $TYPES; do
-    AUDIO_FOLDER="mp3s/"$TYPE;
-    TXT_FOLDER="txts/"$TYPE;
-    for TXT_NAME in `ls ${TXT_FOLDER}`; do
-        TXT_PATH=${TXT_FOLDER}/${TXT_NAME};
-        TAG_NAME=${TXT_NAME%.txt};
-        TAG_FOLDER=${AUDIO_FOLDER}"/"${TAG_NAME};
-        mkdir -p $TAG_FOLDER;
-        cat -n ${TXT_PATH} | head -${MUSIC_NUM} | while read line; do echo ${line}" "${TAG_FOLDER}; done | parallel -j ${PARA_NUM} -k get_clip
-    done
+PARA_NUM="32"           # 爬取并行进程数
+MUSIC_NUM="2000"        # 每个歌曲标签下载歌曲数
+TYPE="YZ语种"
+AUDIO_FOLDER="mp3s/"$TYPE;
+TXT_FOLDER="txts/"$TYPE;
+for TXT_NAME in `ls ${TXT_FOLDER}`; do
+    TXT_PATH=${TXT_FOLDER}/${TXT_NAME};
+    TAG_NAME=${TXT_NAME%.txt};
+    TAG_FOLDER=${AUDIO_FOLDER}"/"${TAG_NAME};
+    mkdir -p $TAG_FOLDER;
+    cat -n ${TXT_PATH} | head -${MUSIC_NUM} | while read line; do echo ${line}" "${TAG_FOLDER}; done | parallel -j ${PARA_NUM} -k get_clip
 done

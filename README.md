@@ -2,6 +2,7 @@
 
 ## 实现
 ### 获取歌曲id
+#### 曲风流派
 - 访问 url 
     - 以爬取摇滚曲风的歌曲为例, 对应**曲风url**为https://www.xiami.com/genre/gid/3.
     - 曲风主页只显示前5首歌, 需要点击全部进入**全部曲风url**https://www.xiami.com/list?scene=genre&type=song&query={%22genreType%22:1,%22genreId%22:%223%22} 
@@ -14,6 +15,15 @@
 - 通过 html 获取 songid
     - html 中的歌曲信息格式 ``` <a href="/song/fO7s7a822">无地自容</a>```
     - 通过正则表达式解析 ``` '<a href="/song/([^"]+?)">'```
+
+#### 歌单
+- 直接访问歌单页面同样会被封禁
+- 进入虾米主页 https://www.xiami.com/
+- 用 selenium 模拟点击歌单
+- 用 selenium 模拟点击全部歌单
+- 用 selenium 模拟选择语种/华语, 点击
+- 用 selenium 模拟点击各个歌单, 进入歌单页面
+- 通过正则表达式解析获取歌曲id
 
 ### 下载歌曲id对应的mp3音乐
 - 歌曲id fO7s7a822
@@ -30,8 +40,10 @@
 
 ## 运行
 ```bash
-# 歌曲id写入txts
-python3 xiami.py
+# 曲风歌曲id写入txts
+python3 genre.py
+# 歌单歌曲id写入txts
+python3 collect.py
 # 根据txts下载音乐到mp3s
 sh get_mp3.sh
 ```

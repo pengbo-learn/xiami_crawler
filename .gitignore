@@ -1,6 +1,6 @@
 *.pyc
 .*.swp
-*.mp3
+*.mp3*
 *.log
 driver/firefox*
 env_*/
